@@ -14,10 +14,10 @@
     <title>Sofian | Todo app</title>
   </head>
   <body>
-    <header>
+    <div class="header">
       <img src="./images/bg-desktop-dark.jpg" alt="" />
-    </header>
-  
+    </div>
+
     <div class="content-wrapper">
       <div class="title">
         <h1>TO DO</h1>
@@ -30,7 +30,10 @@
         </svg>
       </div>
       <div class="current-content">
-        <input type="checkbox" name="current-task" id="current-task" />
+        <label class="container">
+          <input type="checkbox">
+          <span class="checkmark"><svg xmlns="http://www.w3.org/2000/svg" width="11" height="9"><path fill="none" stroke="#FFF" stroke-width="2" d="M1 4.304L3.696 7l6-6"/></svg></span>
+        </label>
         <input type="text" id="current-text" />
       </div>
       <div class="tasks-remain">
@@ -71,7 +74,7 @@
           <p>Let's have time for me</p>
         </div>
       </div>
-     
+
       <div class="footer-content">
         <div class="section-left">
           <p>5 items left</p>
@@ -85,9 +88,9 @@
           <button>Clear Completed</button>
         </div>
       </div>
-      <div class="background">
-        <p>Drag and drop to reorder list</p>
-      </div>
+    </div>
+    <div class="background">
+      <p>Drag and drop to reorder list</p>
     </div>
   </body>
   <footer>
