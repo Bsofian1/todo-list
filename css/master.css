@@ -104,6 +104,8 @@ body {
   background: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
 }
 
+
+
 .current-text {
   height: 30px;
   width: 92%;
@@ -113,14 +115,11 @@ body {
   padding: 0 20px;
 }
 
-.current-text.centered{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    
+.current-text.centered {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-
-
 
 *:focus {
   outline: none;
@@ -137,8 +136,6 @@ body {
   align-items: center;
   border-bottom: 1px solid var(--footer-font-color-dark);
 }
-
-
 
 /* center the cross to delete */
 .current-content:hover span {
