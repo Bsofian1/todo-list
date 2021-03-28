@@ -4,6 +4,7 @@ const App = (() => {
   //Cache the DOM
   const textInput = document.querySelector(".current-text");
   const taskRemain = document.querySelector(".tasks-remain");
+  const itemLeftEl = document.querySelector(".section-left").children[0];
 
   let todoList = [];
 
@@ -18,11 +19,16 @@ const App = (() => {
                 </div>
             </div>
             <h3 class="current-text centered">${item.title}</h3>
-            <span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"><path fill="#494C6B" fill-rule="evenodd" d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"/></svg></span>
+            <span id="delete"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"><path fill="#494C6B" fill-rule="evenodd" d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"/></svg></span>
       </div>`;
     });
 
     taskRemain.innerHTML = markup;
+    itemLeftEl.innerHTML = itemLefts(todoList.length);
+  };
+
+  const itemLefts = (num) => {
+    return num <= 1 ? `${num} item left` : `${num} items left`;
   };
 
   const listeners = (_) => {
@@ -34,24 +40,47 @@ const App = (() => {
       }
     });
 
-    window.addEventListener("click", function (e) {
-      taskDone();
+    taskRemain.addEventListener("click", function (e) {
+      let index = e.target.parentElement.parentElement.id;
+
+      taskDone(index);
+      setTimeout(() => {
+        render();
+      }, 2000);
+    });
+
+    window.addEventListener("keypress", function (e) {
+      if (e.code === "KeyP") {
+        console.log(itemLeftEl);
+      }
     });
   };
 
   const taskDone = (index) => {
     //Put the icon and the gradient
-    let box = document.getElementById("0").children[0].children[0];
-    box.classList.toggle('checked')
+    let box = document.getElementById(index).children[0].children[0];
+    let text = document.getElementById(index).children[1];
+
+    box.classList.toggle("checked");
+    console.log(box);
+    addArrow(box);
     //Change the text style
-    if(box.children[0].style.display = "none") {
-      box.children[0].style.display = "flex"
-    } else{
-      box.children[0].style.display = "none";
-    } 
+    text.classList.toggle("complete");
     //Remove the task from todolist
-    
-    //Render
+
+    removeTodo(todoList, index);
+  };
+
+  const addArrow = (elem) => {
+    if (elem.children[0].style.display === "flex") {
+      elem.children[0].style.display = "none";
+    } else {
+      elem.children[0].style.display = "flex";
+    }
+  };
+
+  const removeTodo = (arr, index) => {
+    arr.splice(index, 1);
   };
 
   return {

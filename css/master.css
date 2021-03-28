@@ -104,6 +104,10 @@ body {
   background: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
 }
 
+h3.complete{
+  text-decoration: line-through;
+  color:var(--footer-font-color-dark)
+}
 
 
 .current-text {
