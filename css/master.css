@@ -96,6 +96,10 @@ body {
 .current-content .check-wrapper .check-bg span {
   display: none;
 }
+
+.current-content .check-wrapper .check-bg span.cross{
+  display: flex;
+}
 /* Check svg */
 .checked {
   display: flex;
@@ -146,6 +150,10 @@ h3.complete{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+span{
+  pointer-events: none;
 }
 
 .current-content span {
