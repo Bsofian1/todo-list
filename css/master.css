@@ -160,6 +160,10 @@ span{
   display: none;
 }
 
+.draggable{
+  cursor: move;
+}
+
 /* *************Footer section********* */
 
 .footer-content {
