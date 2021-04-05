@@ -1,17 +1,15 @@
 import Todo from "./new-todo.js";
-import Dragg from "./dragg.js"
+import Dragg from "./dragg.js";
 
 const App = (() => {
   //Cache the DOM
   const textInput = document.querySelector(".current-text");
   const taskRemain = document.querySelector(".tasks-remain");
-  const buttonCheck = document.querySelector(".check-bg")
+  const buttonCheck = document.querySelector(".check-bg");
   const itemLeftEl = document.querySelector(".section-left").children[0];
   const buttonCenterEl = document.querySelector(".section-center");
-  const deleteTask = document.getElementById(".delete")
-  const buttonRightEl= document.querySelector(".section-right")
- 
- 
+  const deleteTask = document.getElementById(".delete");
+  const buttonRightEl = document.querySelector(".section-right");
 
   let todoList = [];
   let idCount = 0;
@@ -122,7 +120,7 @@ const App = (() => {
   const render = (_) => {
     renderTodo();
     renderItemLeft();
-    
+    Dragg.init()
   };
 
   const listeners = (_) => {
@@ -132,41 +130,36 @@ const App = (() => {
         idCount++;
         render();
         textInput.value = "";
-        
       }
     });
 
     taskRemain.addEventListener("click", function (e) {
-      
-      if(e.target.className === "check-bg" || e.target.className === "check-bg checked"){
+      if (
+        e.target.className === "check-bg" ||
+        e.target.className === "check-bg checked"
+      ) {
         let index = e.target.parentElement.parentElement.id;
         isCompleted(index);
-        render()
-      
-      }else if(e.target.className === "delete"){
-        let indexDelete = e.target.parentElement.id
-        removeTodo(todoList, indexDelete)
-        render()
+        render();
+      } else if (e.target.className === "delete") {
+        let indexDelete = e.target.parentElement.id;
+        removeTodo(todoList, indexDelete);
+        render();
       }
-
-      
     });
 
+    buttonCenterEl.addEventListener("click", function (e) {
+      renderItemLeft(e.target.className);
+    });
 
-
-    buttonCenterEl.addEventListener("click", function(e){
-      renderItemLeft(e.target.className)
-    })
-
-    buttonRightEl.addEventListener("click", ()=> {
+    buttonRightEl.addEventListener("click", () => {
       todoList.forEach((item, index) => {
-        if(item.complete === true){
-          todoList.splice(index, 1)
+        if (item.complete === true) {
+          todoList.splice(index, 1);
         }
-      })
+      });
       renderTodo();
-    })
-
+    });
   };
 
   // Toggle the complete task state
@@ -188,7 +181,5 @@ const App = (() => {
   };
 })();
 
-
 App.render();
 App.listeners();
-
