@@ -8,7 +8,6 @@ const App = (() => {
   const buttonCheck = document.querySelector(".check-bg");
   const itemLeftEl = document.querySelector(".section-left").children[0];
   const buttonCenterEl = document.querySelector(".section-center");
-  const deleteTask = document.getElementById(".delete");
   const buttonRightEl = document.querySelector(".section-right");
 
   let todoList = [];
@@ -120,6 +119,8 @@ const App = (() => {
   const render = (_) => {
     renderTodo();
     renderItemLeft();
+
+    //set the draggable function
     Dragg.init()
   };
 
