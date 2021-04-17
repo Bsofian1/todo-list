@@ -26,6 +26,12 @@ body {
   height: 100vh;
   background-color: var(--main-bg-color-dark);
   position: relative;
+  max-width: 1440px;
+  margin: auto;
+}
+
+.header img{
+  width: 100%
 }
 
 .background p {
@@ -219,4 +225,29 @@ span{
 
 .footer-content .section-right button:focus {
   color: hsl(220, 98%, 61%);
+}
+
+
+/* *************Responsive section********* */
+@media (max-width: 650px){
+  .content-wrapper{
+    width: 90%;
+  }
+  .header{
+    width: 100vw;
+  }
+  img{
+    width: 100%;
+  }
+}
+
+@media (max-width: 500px){
+  .footer-content{
+    display: block;
+  }
+  .section-center, .section-left, .section-right{
+    border-bottom: 1px solid ;
+    display: flex;
+    justify-content: space-between;
+  }
 }

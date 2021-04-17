@@ -129,7 +129,7 @@ const App = (() => {
       if (e.code === "Enter") {
         todoList.push(new Todo(textInput.value, idCount));
         idCount++;
-        render();
+        renderAll();
         textInput.value = "";
       }
     });
